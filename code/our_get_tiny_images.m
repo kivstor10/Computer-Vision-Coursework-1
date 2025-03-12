@@ -26,17 +26,17 @@ function [] = our_get_tiny_images(image_path, resize, resizeSideLength)
         resizedImage = imresize(croppedImage, [resizeSideLength, resizeSideLength]);
     else
         fprintf("Cropping to a square of side length %d about the centerpoint...\n", resizeSideLength);
-        % Center crop again with the specified cropSideLength
+        % Center crop again with the specified resizeSideLength
         cropWindow = centerCropWindow2d(size(croppedImage), [resizeSideLength, resizeSideLength]);
         resizedImage = imcrop(croppedImage, cropWindow);
     end
     
-    % Display the original and the processed (resized or cropped) images
-    subplot(1,2,1)
-    imshow(image)
-    title('Original Image')
-    
-    subplot(1,2,2)
-    imshow(resizedImage)
-    title('Processed Image')  
+    % % Display the original and the processed (resized or cropped) images
+    % subplot(1,2,1)
+    % imshow(image)
+    % title('Original Image')
+    % 
+    % subplot(1,2,2)
+    % imshow(resizedImage)
+    % title('Processed Image')  
 end
