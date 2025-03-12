@@ -16,6 +16,7 @@
 %implementation. You need to reimplement the above two functions and also
 %implement the 'colour histogram' feature extraction.
 
+% FEATURE = 'tiny image';
 FEATURE = 'tiny image';
 %FEATURE = 'colour histogram';
 
@@ -80,7 +81,7 @@ switch lower(FEATURE)
         % small square resolution, e.g. 16x16. You can either resize the images to
         % square while ignoring their aspect ratio or you can crop the center
         % square portion out of each image. Making the tiny images zero mean and
-        % unit length (normalizing them) will increase performance modestly.
+        % unit length (normalizing them) will increagese performance modestly.
         
         train_image_feats = get_tiny_images(train_image_paths);
         test_image_feats  = get_tiny_images(test_image_paths);
