@@ -45,7 +45,7 @@ abbr_categories = {'Kit', 'Sto', 'Bed', 'Liv', 'Hou', 'Ind', 'Sta', ...
 %number of training examples per category to use. Max is 100. For
 %simplicity, we assume this is the number of test cases per category, as
 %well.
-num_train_per_cat = 100; 
+num_train_per_cat = 90; 
 
 %This function returns cell arrays containing the file path for each train
 %and test image, as well as cell arrays with the label of each train and
@@ -129,7 +129,10 @@ switch lower(CLASSIFIER)
     % predicted_categories is an M x 1 cell array, where each entry is a string
     %  indicating the predicted category for each test image.
     % Useful functions: pdist2 (Matlab) and vl_alldist2 (from vlFeat toolbox)
-    predicted_categories = nearest_neighbor_classify(train_image_feats, train_labels, test_image_feats);
+
+    % predicted_categories = nearest_neighbor_classify(train_image_feats, train_labels, test_image_feats);
+
+    predicted_categories = our_nearest_neighbor_classify(train_image_feats, train_labels, test_image_feats, 1);
 end
 
 %% Step 3: Build a confusion matrix and score the recognition system
