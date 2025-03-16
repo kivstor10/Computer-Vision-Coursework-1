@@ -3,9 +3,9 @@ function image_feats = get_colour_histograms(image_paths)
     % image_feats: feature matrix with size N x (num_bins^3), N = num images
 
     % settings to tweak for experimentation
-    num_bins = 16;         % bins per channel, e.g. 8, 16, 32, etc
+    num_bins = 8;         % bins per channel, e.g. 8, 16, 32, etc
     normalise_hist = true; % normalise (yes=true, no=false)
-    color_space = 'rgb';   % colorspace options: 'rgb', 'hsv', 'lab'
+    color_space = 'rgb';   % colorspace set to 'rgb'
 
     num_images = length(image_paths); % amount of images in image_paths
     num_features = num_bins^3; % length of feature vector
@@ -22,8 +22,6 @@ function image_feats = get_colour_histograms(image_paths)
         switch lower(color_space)
             case 'hsv'
                 img = rgb2hsv(img); % convert to hsv
-            case 'lab'
-                img = rgb2lab(img); % convert to lab
             case 'rgb'
                 img = double(img) / 255; % normalise rgb to [0,1]
             otherwise

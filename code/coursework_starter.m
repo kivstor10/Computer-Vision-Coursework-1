@@ -17,8 +17,7 @@
 %implement the 'colour histogram' feature extraction.
 
 % FEATURE = 'tiny image';
-FEATURE = 'tiny image';
-%FEATURE = 'colour histogram';
+FEATURE = 'colour histogram';
 
 CLASSIFIER = 'nearest neighbor';
 
@@ -132,7 +131,7 @@ switch lower(CLASSIFIER)
 
     % predicted_categories = nearest_neighbor_classify(train_image_feats, train_labels, test_image_feats);
 
-    predicted_categories = our_nearest_neighbor_classify(train_image_feats, train_labels, test_image_feats, 1);
+    predicted_categories = our_nearest_neighbor_classify   (train_image_feats, train_labels, test_image_feats, 5);
 end
 
 %% Step 3: Build a confusion matrix and score the recognition system
