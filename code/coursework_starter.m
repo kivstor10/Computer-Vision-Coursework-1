@@ -45,7 +45,7 @@ abbr_categories = {'Kit', 'Sto', 'Bed', 'Liv', 'Hou', 'Ind', 'Sta', ...
 %number of training examples per category to use. Max is 100. For
 %simplicity, we assume this is the number of test cases per category, as
 %well.
-num_train_per_cat = 90; 
+num_train_per_cat = 100; 
 
 %This function returns cell arrays containing the file path for each train
 %and test image, as well as cell arrays with the label of each train and
@@ -86,9 +86,32 @@ switch lower(FEATURE)
         tinyImageSize = 9;
         resize = true;          % These settings create the best outputs
         warp = true;
+        normalise = true;
+        use_rgb = true;
 
-        train_image_feats = our_get_tiny_images(train_image_paths, resize, tinyImageSize, warp);
-        test_image_feats  = our_get_tiny_images(test_image_paths, resize, tinyImageSize, warp);
+        if resize
+            fprintf("\nResize       :       True")
+        else
+            fprintf("\nResize       :       False")
+        end
+        if warp
+            fprintf("\nWarp         :       True")
+        else
+            fprintf("\nWarp         :       False")
+        end
+        if normalise
+            fprintf("\nNormalise    :       True")
+        else
+            fprintf("\nNormalise    :       False")
+        end
+        if use_rgb
+            fprintf("\nUse RGB      :       True\n\n")
+        else
+            fprintf("\nUse RGB      :       False\n\n")
+        end
+
+        train_image_feats = our_get_tiny_images(train_image_paths, resize, tinyImageSize, warp, normalise, use_rgb);
+        test_image_feats  = our_get_tiny_images(test_image_paths, resize, tinyImageSize, warp, normalise, use_rgb);
 
         % train_image_feats = get_tiny_images(train_image_paths);
         % test_image_feats  = get_tiny_images(test_image_paths);
@@ -149,3 +172,4 @@ create_results_webpage( train_image_paths, ...
                         categories, ...
                         abbr_categories, ...
                         predicted_categories)
+fprintf("\n----------------------------------------------------------------\n\n")

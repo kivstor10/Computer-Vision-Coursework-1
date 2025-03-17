@@ -6,6 +6,27 @@ function image_feats = our_get_tiny_images(image_paths, resize, tiny_image_size,
     % - warp: Boolean, whether to warp the image (skip cropping).
     % - normalise: Boolean, whether to normalize the feature vectors.
     % - use_rgb: Boolean, whether to use RGB (768-long vector) or grayscale (256-long vector).
+    
+    if resize
+        fprintf("\nResize: True")
+    else
+        fprintf("\nResize: False")
+    end
+    if warp
+        fprintf("\nWarp: True")
+    else
+        fprintf("\nWarp: False")
+    end
+    if normalise
+        fprintf("\nNormalise: True")
+    else
+        fprintf("\nNormalise: False")
+    end
+    if use_rgb
+        fprintf("\ne_rgb: True")
+    else
+        fprintf("\nNormalise: True")
+    end
 
     num_images = length(image_paths);
     
