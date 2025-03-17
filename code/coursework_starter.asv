@@ -88,7 +88,7 @@ switch lower(FEATURE)
         normalise = true;
         use_rgb = true;
 
-        fprintf("\nImageSideLength  :       %d", tinyImageSize)
+        fprintf("\nTiny       :       True")
         if resize
             fprintf("\nResize       :       True")
         else
