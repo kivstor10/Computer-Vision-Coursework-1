@@ -8,6 +8,9 @@ function image_feats = our_get_tiny_images(image_paths, resize, tiny_image_size,
     % - use_rgb: Boolean, whether to use RGB (768-long vector) or grayscale (256-long vector).
 
     num_images = length(image_paths);
+
+    % Start timing
+    tic;
     
     % Determine the feature vector length based on use_rgb
     if use_rgb
@@ -73,4 +76,9 @@ function image_feats = our_get_tiny_images(image_paths, resize, tiny_image_size,
             image_feats(i, :) = feature_vector;
         end
     end
+
+    % End timing and display results
+    elapsed_time = toc;
+    fprintf('%d images processed in %.4f seconds (%.4f sec per image)\n', ...
+        num_images, elapsed_time, elapsed_time / num_images);
 end

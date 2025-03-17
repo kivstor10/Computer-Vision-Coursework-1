@@ -16,8 +16,8 @@
 %implementation. You need to reimplement the above two functions and also
 %implement the 'colour histogram' feature extraction.
 
-% FEATURE = 'tiny image';
-FEATURE = 'colour histogram';
+FEATURE = 'tiny image';
+% FEATURE = 'colour histogram';
 
 CLASSIFIER = 'nearest neighbor';
 
@@ -88,26 +88,26 @@ switch lower(FEATURE)
         normalise = true;
         use_rgb = true;
 
-        fprintf("\nImageSideLength  :       %d", tinyImageSize)
+        fprintf("\nImageSideLength  :       %dpx", tinyImageSize)
         if resize
-            fprintf("\nResize       :       True")
+            fprintf("\nResize           :       True")
         else
-            fprintf("\nResize       :       False")
+            fprintf("\nResize           :       False")
         end
         if warp
-            fprintf("\nWarp         :       True")
+            fprintf("\nWarp             :       True")
         else
-            fprintf("\nWarp         :       False")
+            fprintf("\nWarp             :       False")
         end
         if normalise
-            fprintf("\nNormalise    :       True")
+            fprintf("\nNormalise        :       True")
         else
-            fprintf("\nNormalise    :       False")
+            fprintf("\nNormalise        :       False")
         end
         if use_rgb
-            fprintf("\nUse RGB      :       True\n\n")
+            fprintf("\nUse RGB          :       True\n\n")
         else
-            fprintf("\nUse RGB      :       False\n\n")
+            fprintf("\nUse RGB          :       False\n\n")
         end
 
         train_image_feats = our_get_tiny_images(train_image_paths, resize, tinyImageSize, warp, normalise, use_rgb);
