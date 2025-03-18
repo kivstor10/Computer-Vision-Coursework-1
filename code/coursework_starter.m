@@ -82,12 +82,13 @@ switch lower(FEATURE)
         % square portion out of each image. Making the tiny images zero mean and
         % unit length (normalizing them) will increagese performance modestly.
         
-        tinyImageSize = 9;
+        k = 10;
+        tinyImageSize = 16;
         resize = true;          % These settings create the best outputs
-        warp = true;
+        warp = false;
         normalise = true;
         use_rgb = true;
-
+        fprintf("\nk                :       %d", k)
         fprintf("\nImageSideLength  :       %dpx", tinyImageSize)
         if resize
             fprintf("\nResize           :       True")
@@ -155,7 +156,7 @@ switch lower(CLASSIFIER)
 
     % predicted_categories = nearest_neighbor_classify(train_image_feats, train_labels, test_image_feats);
 
-    predicted_categories = our_nearest_neighbor_classify   (train_image_feats, train_labels, test_image_feats, 5);
+    predicted_categories = our_nearest_neighbor_classify   (train_image_feats, train_labels, test_image_feats, k);
 end
 
 %% Step 3: Build a confusion matrix and score the recognition system

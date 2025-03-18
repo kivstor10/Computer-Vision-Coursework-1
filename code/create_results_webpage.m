@@ -62,6 +62,7 @@ set(axis_handle, 'XTick', 1:15)
 set(axis_handle, 'XTickLabel', abbr_categories)
 set(axis_handle, 'YTick', 1:15)
 set(axis_handle, 'YTickLabel', categories)
+set(gcf, 'Position', [100, 100, 950, 500]);
 
 visualization_image = frame2im(getframe(fig_handle));
 % getframe() is unreliable. Depending on the rendering settings, it will
