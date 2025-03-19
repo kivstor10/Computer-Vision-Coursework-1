@@ -82,10 +82,10 @@ switch lower(FEATURE)
         % square portion out of each image. Making the tiny images zero mean and
         % unit length (normalizing them) will increagese performance modestly.
         
-        k = 10;
-        tinyImageSize = 16;
+        k = 5;
+        tinyImageSize = 10;
         resize = true;          % These settings create the best outputs
-        warp = false;
+        warp = true;
         normalise = true;
         use_rgb = true;
         fprintf("\nk                :       %d", k)
@@ -111,8 +111,8 @@ switch lower(FEATURE)
             fprintf("\nUse RGB          :       False\n\n")
         end
 
-        train_image_feats = our_get_tiny_images(train_image_paths, resize, tinyImageSize, warp, normalise, use_rgb);
-        test_image_feats  = our_get_tiny_images(test_image_paths, resize, tinyImageSize, warp, normalise, use_rgb);
+        train_image_feats = get_tiny_images(train_image_paths, resize, tinyImageSize, warp, normalise, use_rgb);
+        test_image_feats  = get_tiny_images(test_image_paths, resize, tinyImageSize, warp, normalise, use_rgb);
 
         % train_image_feats = get_tiny_images(train_image_paths);
         % test_image_feats  = get_tiny_images(test_image_paths);
@@ -156,7 +156,7 @@ switch lower(CLASSIFIER)
 
     % predicted_categories = nearest_neighbor_classify(train_image_feats, train_labels, test_image_feats);
 
-    predicted_categories = our_nearest_neighbor_classify   (train_image_feats, train_labels, test_image_feats, k);
+    predicted_categories = nearest_neighbor_classify   (train_image_feats, train_labels, test_image_feats, k);
 end
 
 %% Step 3: Build a confusion matrix and score the recognition system

@@ -60,15 +60,15 @@ function image_feats = our_get_tiny_images(image_paths, resize, tiny_image_size,
         
         % Flatten the processed image into a feature vector
         if use_rgb
-            % For RGB, flatten all three channels into a single vector
+            % For RGB, flatten all three channels into a single feature vector
             image_feats(i, :) = reshape(processedImage, 1, []);
         else
-            % For grayscale, flatten the single channel
+            % For grayscale, flatten the single feature vector
             image_feats(i, :) = processedImage(:)';
         end
     end
     
-    % Normalize feature vectors if requested
+    % Normalize feature vectors if enabled
     if normalise
         for i = 1:num_images
             feature_vector = image_feats(i, :);
